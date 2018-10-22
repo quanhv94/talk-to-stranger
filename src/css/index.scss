@@ -1,0 +1,66 @@
+@import './reset.scss';
+
+.config-form {
+  width: 500px;
+  max-width: 100%;
+  margin: 40px auto
+ }
+.chat-panel {
+  height: calc(100vh - 64px);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  .message-list {
+    flex: 1;
+    overflow: hidden auto;
+    padding: 0 10px;
+    .message {
+      position: relative;
+      border-radius: 10px;
+      background: #f50057;
+      color: #fff;
+      margin-bottom: 10px ;
+      float: left;
+      clear: both;
+      padding: 5px 15px;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #f50057;
+        display: inline-block;
+        position: absolute;
+        top: 7px;
+        left: -2px;
+        transform: rotate(-22deg) skew(40deg);
+    }
+      &.me {
+        float: right;
+        &::after {
+          left: auto;
+          right: -2px;
+        }
+      }
+    }
+    .partner-leaved {
+      text-align: center;
+      clear: both;
+    }
+    .partner-typing {
+      font-style: italic;
+      clear: both;
+    }
+  }
+  .message-input {
+    flex: 0 0 50px;
+    display: flex;
+    textarea {
+      resize: none;
+      width: 100%;
+      outline: none;
+    }
+  }
+}
