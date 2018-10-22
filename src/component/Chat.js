@@ -13,7 +13,6 @@ class Chat extends React.Component {
     this.stopTyping = _.debounce(this.stopTyping, 500)
   }
   componentDidUpdate(prevProps) {
-    console.log(1)
     if (prevProps.chat.messages.length < this.props.chat.messages.length
       || this.props.chat.partnerLeaved === true
       || this.props.chat.partnerTyping === true) {
@@ -21,7 +20,6 @@ class Chat extends React.Component {
     }
   }
   stopTyping = () => {
-    console.log("stop typing")
     this.isTyping = false
     this.props.stopTyping()
   }
@@ -32,9 +30,11 @@ class Chat extends React.Component {
     }
     if (event.keyCode === 13 && !event.shiftKey) {
       this.props.sendMessage(event.target.value)
+      this.isTyping = false
+      this.props.stopTyping()
       event.target.value = ''
     }
-    this.stopTyping()
+    this.isTyping && this.stopTyping()
   }
   onKeyDown = () => {
     if (!this.isTyping) {
@@ -50,7 +50,7 @@ class Chat extends React.Component {
       <div className="chat-panel">
         <div className="message-list" ref={this.chatListRef}>
           <div>
-            {chat.isPairingSuccess && chat.messages.length == 0 && <p>Please say "Hello" to greet</p>}
+            {chat.isPairingSuccess && chat.messages.length === 0 && <p>Please say "Hello" to greet</p>}
             {chat.messages.map((message, index) => (
               <div key={index}
                 className={classnames({
@@ -61,7 +61,7 @@ class Chat extends React.Component {
                 {message.content}
               </div>
             ))}
-            {chat.partnerLeaved && <div className="partner-leaved">Stranger has been leaved.</div>}
+            {chat.partnerLeaved && <div className="partner-leaved">Stranger has left.</div>}
             {chat.partnerTyping && <div className="partner-typing">Stranger is typing...</div>}
           </div>
         </div>
