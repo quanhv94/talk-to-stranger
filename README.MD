@@ -15,4 +15,4 @@ $ npm start
 ```
 
 Open two tabs at "localhost:3000" and that's it.
-Online demo: [https://demo.com/](https://demo.com/)
+Online demo: [http://talk-to-stranger-demo.herokuapp.com/](http://talk-to-stranger-demo.herokuapp.com/)
