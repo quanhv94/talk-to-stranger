@@ -5,12 +5,9 @@ const port = process.env.PORT || 8888
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const uuidv1 = require('uuid/v1')
+const path = require('path')
 
 app.use(cors())
-
-app.get('/', (req, res) => {
-  res.send("Hello world")
-})
 
 let watingSockets = [];
 
@@ -65,6 +62,11 @@ io.on('connection', (socket) => {
     io.to(socket.roomId).emit('partner-leave-chat');
   });
 });
+app.use(express.static(path.resolve(__dirname, './build')))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './build/index.js'))
+})
 
 http.listen(port, () => {
   console.log('App is running')
