@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const port = process.env.PORT || 8888
+const port = 8888
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const uuidv1 = require('uuid/v1')

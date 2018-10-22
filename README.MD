@@ -7,10 +7,6 @@ A simple chat application to talk to random user using socket.io and react, redu
 $ git clone https://github.com/quanhv94/talk-to-stranger.git
 $ cd talk-to-stranger
 $ npm install
-$ node server.js
-```
-Open new terminal
-```
 $ npm start
 ```
 
