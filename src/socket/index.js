@@ -11,7 +11,6 @@ export const setupSocket = (dispatch) => {
   socket.on('pair-success', (data) => {
     dispatch(pairSuccess(data))
   })
-
   socket.on('receive-message', (data) => {
     dispatch(receiveMessage(data))
   })
