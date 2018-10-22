@@ -67,7 +67,7 @@ class Chat extends React.Component {
         </div>
         <div className="message-input">
           <textarea disabled={!chat.isPairingSuccess}
-            placeholder={chat.isPairingSuccess ? "Please input message!" : "Please wait for partner!"}
+            placeholder={chat.isPairingSuccess ? "Please input message!" : "Please wait for stranger!"}
             onKeyUp={this.onKeyUp}
             onKeyDown={this.onKeyDown}>
           </textarea>
